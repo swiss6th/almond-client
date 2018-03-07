@@ -213,7 +213,7 @@ props[deviceTypes.MovementSensor]  =  {
     Battery: 2
 }
 props[deviceTypes.MultiSwitch]  =  { // NOTE: Not sure about this :(
-    SwitchBinary1: 1,
+    SwitchBinary: 1,
     SwitchBinary2: 2
 }
 props[deviceTypes.UnknownOnOffModule]  =  {
