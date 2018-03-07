@@ -5,7 +5,63 @@ var WebSocket = require('ws');
 var EventEmitter = require('events').EventEmitter;
 var debug = require('debug')('almond-client');
 var randomstring = require("randomstring");
-var deviceProps = require("./deviceProperties.js");
+var deviceProps = require("./deviceProperties.js");	
+
+function WebSocketClient(){
+	this.number = 0;	// Message number
+	this.autoReconnectInterval = 5*1000;	// ms
+}
+WebSocketClient.prototype.open = function(url){
+	this.url = url;
+	this.instance = new WebSocket(this.url);
+	this.instance.on('open',()=>{
+		this.onopen();
+	});
+	this.instance.on('message',(data,flags)=>{
+		this.number ++;
+		this.onmessage(data,flags,this.number);
+	});
+	this.instance.on('close',(e)=>{
+		switch (e){
+		case 1000:	// CLOSE_NORMAL
+			console.log("WebSocket: closed");
+			break;
+		default:	// Abnormal closure
+			this.reconnect(e);
+			break;
+		}
+		this.onclose(e);
+	});
+	this.instance.on('error',(e)=>{
+		switch (e.code){
+		case 'ECONNREFUSED':
+			this.reconnect(e);
+			break;
+		default:
+			this.onerror(e);
+			break;
+		}
+	});
+}
+WebSocketClient.prototype.send = function(data,option){
+	try{
+		this.instance.send(data,option);
+	}catch (e){
+		this.instance.emit('error',e);
+	}
+}
+WebSocketClient.prototype.reconnect = function(e){
+	console.log(`WebSocketClient: retry in ${this.autoReconnectInterval}ms`,e);
+	var that = this;
+	setTimeout(function(){
+		console.log("WebSocketClient: reconnecting...");
+		that.open(that.url);
+	},this.autoReconnectInterval);
+}
+WebSocketClient.prototype.onopen = function(e){	console.log("WebSocketClient: open",arguments);	}
+WebSocketClient.prototype.onmessage = function(data,flags,number){	console.log("WebSocketClient: message",arguments);	}
+WebSocketClient.prototype.onerror = function(e){	console.log("WebSocketClient: error",arguments);	}
+WebSocketClient.prototype.onclose = function(e){	console.log("WebSocketClient: closed",arguments);	}
 
 var AlmondClient = module.exports = function(config) {
     EventEmitter.call(this);
@@ -149,10 +205,14 @@ var AlmondDevice = function(client, config) {
     }
 }
 
-util.inherits(AlmondDevice, EventEmitter);
-
 AlmondDevice.prototype.setProp = function(prop, value, cb) {
     var self = this;
+
+    if (value == this._deviceValues[prop].value) {
+        cb(value);
+        return;
+    }
+    //this._deviceValues[prop].value = value;
 
     this.client._sendMessage({
         "CommandType":"UpdateDeviceIndex",
@@ -160,17 +220,33 @@ AlmondDevice.prototype.setProp = function(prop, value, cb) {
         "Index": prop,
         "Value": value
     }, function(err, message) {
+        if (err) return cb(err);
         if (message.Success) {
             debug("Successfully sent property [%s] update [%s]", prop, value)
+	    
 
             var waitForDevicePropUpdate = function(propUpdated, newValue) {
                 if (propUpdated == prop) {
                     self.removeListener('valueUpdated', waitForDevicePropUpdate);
-                    cb(newValue);
+                    //self._deviceValues[prop].value = newValue;
+
+		  // if (typeof newValue === 'string') {
+		//		if (newValue === 'true' || newValue === 'false'){
+
+	//			if(typeof this._deviceValues[prop] !== "undefined" && his._deviceValues[prop].value !== newValue)
+	//				this._deviceValues[prop].value= newValue == 'true';
+	//			}
+//			}
+//			else{
+//				this._deviceValues[prop].value= newValue;
+//			}
+			cb(newValue);
+		    
                 }
             }
             if (cb) {
                 self.prependListener('valueUpdated', waitForDevicePropUpdate);
+		
             }
         }
     });
@@ -181,6 +257,13 @@ AlmondDevice.prototype.getProp = function(prop) {
 }
 
 AlmondDevice.prototype.updateProp = function(prop, value) {
+    // Botch to hide the fact that the almond encodes true/false as strings rather than bools or ints.
+    if (typeof value === 'string') {
+        if (value === 'true' || value === 'false'){
+            value = value == 'true';
+        }
+    }
+
     if (typeof this._deviceValues[prop] === "undefined") return;
     if (this._deviceValues[prop].value === value) return;
 
@@ -188,6 +271,8 @@ AlmondDevice.prototype.updateProp = function(prop, value) {
     this._deviceValues[prop].value = value;
     this.emit("valueUpdated", prop, value);
 }
+
+util.inherits(AlmondDevice, EventEmitter);
 
 var WebSocketEmitter = function() {
     EventEmitter.call(this);

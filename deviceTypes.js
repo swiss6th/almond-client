@@ -55,5 +55,9 @@ module.exports = {
     MultiSoundSiren: 55,
     EnergyReader: 56,
     NestThermostat: 57,
-    NestSmokeDetector: 58
+    NestSmokeDetector: 58,
+    NaN: 59,
+    GenericPSM: 60,
+    AlmondSiren: 63,
+    AlmondBlink: 64
 }

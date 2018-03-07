@@ -298,3 +298,15 @@ props[deviceTypes.EnergyReader]  =  {
 }
 props[deviceTypes.NestThermostat]  =  57, // For later
 props[deviceTypes.NestSmokeDetector]  =  58
+
+props[deviceTypes.GenericPSM]  =  {
+    SwitchBinary: 1
+}
+props[deviceTypes.AlmondBlink] = {
+    SwitchBinary: 1,
+    SwitchBinary2: 2,
+    Hue: 3
+}
+props[deviceTypes.AlmondSiren] = {
+    SwitchBinary: 2
+}
