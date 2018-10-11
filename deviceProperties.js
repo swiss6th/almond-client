@@ -300,7 +300,8 @@ props[deviceTypes.NestThermostat]  =  57, // For later
 props[deviceTypes.NestSmokeDetector]  =  58
 
 props[deviceTypes.GenericPSM]  =  {
-    SwitchBinary: 1
+    SwitchBinary: 1,
+    SwitchMultilevel: 2
 }
 props[deviceTypes.AlmondBlink] = {
     SwitchBinary: 1,

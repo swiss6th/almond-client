@@ -1,6 +1,6 @@
 {
   "name": "almond-client",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Node client that uses the Almond+ websocket API to do stuff.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablopoo/almond-client"
+    "url": "https://github.com/swiss6th/almond-client"
   },
   "dependencies": {
     "debug": "^2.6.0",
