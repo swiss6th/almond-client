@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node test.js"
   },
-  "author": "Thomas Purchas",
+  "author": "Andrew Hall",
   "license": "ISC",
   "repository": {
     "type": "git",

@@ -30,7 +30,7 @@ props[deviceTypes.DoorLock]  =  {
     MaximumUsers: 4
 }
 props[deviceTypes.Alarm]  =  {
-    Basic: 1,
+    State: 1,
     Battery: 2
 }
 props[deviceTypes.Thermostat]  =  {
@@ -285,7 +285,7 @@ props[deviceTypes.ZWtoACIRExtender]  =  {
     Config: 11
 }
 props[deviceTypes.MultiSoundSiren]  =  {
-    MultilevelSwitch: 1
+    SwitchMultilevel: 1
 }
 props[deviceTypes.EnergyReader]  =  {
     Battery: 1,
@@ -300,7 +300,7 @@ props[deviceTypes.NestThermostat]  =  57, // For later
 props[deviceTypes.NestSmokeDetector]  =  58
 
 props[deviceTypes.GenericPSM]  =  {
-    SwitchBinary: 1,
+    State: 1,
     SwitchMultilevel: 2
 }
 props[deviceTypes.AlmondBlink] = {
