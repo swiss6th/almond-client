@@ -1,28 +1,31 @@
 "use strict";
 
-var util = require('util');
-var WebSocket = require('ws');
-var EventEmitter = require('events').EventEmitter;
-var debug = require('debug')('almond-client');
-var randomstring = require("randomstring");
-var deviceProps = require("./deviceProperties.js");	
+const util = require('util');
+const WebSocket = require('ws');
+const EventEmitter = require('events').EventEmitter;
+const debug = require('debug')('almond-client');
+const randomstring = require("randomstring");
+const deviceProps = require("./deviceProperties.js");	
 
 class WebSocketClient {
 	constructor() {
 		this.number = 0; // Message number
-		this.autoReconnectInterval = 5*1000; // ms
+		this.autoReconnectInterval = 5 * 1000; // ms
 	}
 
 	open(url) {
 		this.url = url;
 		this.instance = new WebSocket(this.url);
+
 		this.instance.on('open', () => {
 			this.onopen();
 		});
+
 		this.instance.on('message', (data, flags) => {
 			this.number++;
 			this.onmessage(data, flags, this.number);
 		});
+
 		this.instance.on('close', (e) => {
 			switch (e) {
 				case 1000: // CLOSE_NORMAL
@@ -33,6 +36,7 @@ class WebSocketClient {
 			}
 			this.onclose(e);
 		});
+
 		this.instance.on('error', (e) => {
 			switch (e.code) {
 				case 'ECONNREFUSED':
@@ -54,10 +58,9 @@ class WebSocketClient {
 
 	reconnect(e) {
 		console.log(`WebSocketClient: retry in ${this.autoReconnectInterval}ms`, e);
-		var that = this;
-		setTimeout(function() {
+		setTimeout( () => {
 			console.log("WebSocketClient: reconnecting...");
-			that.open(that.url);
+			this.open(this.url);
 		}, this.autoReconnectInterval);
 	}
 
@@ -82,26 +85,21 @@ module.exports = class AlmondClient extends EventEmitter {
 	constructor(config) {
 		super();
 
-		this.DEVICE_TYPE = require("./deviceTypes.js")
-
 		this.host = config.host;
 		this.port = config.port;
 
 		this.username = config.username;
 		this.password = config.password;
 
-		var url = util.format("ws://%s:%s/%s/%s", this.host, this.port, this.username, this.password)
+		let url = util.format("ws://%s:%s/%s/%s", this.host, this.port, this.username, this.password)
 		this.ws = new WebSocket(url);
 		this.wsEmitter = new WebSocketEmitter();
 
 		this._devices = {};
 
-		var self = this;
-		this.ws.on('open', function open() {
-			self._getGeviceList();
-			self.once("gotDeviceList", function() {
-				self.emit("ready");
-			});
+		this.ws.on('open', () => {
+			this._getDeviceList();
+			this.once("gotDeviceList", () => this.emit("ready"));
 		});
 
 		this.ws.on('message', this._recvMessage.bind(this));
@@ -109,8 +107,8 @@ module.exports = class AlmondClient extends EventEmitter {
 	}
 
 	getDevices() {
-		var devices = [];
-		for (var device in this._devices) {
+		let devices = [];
+		for (let device in this._devices) {
 			devices.push(this._devices[device]);
 		}
 		return devices;
@@ -120,18 +118,17 @@ module.exports = class AlmondClient extends EventEmitter {
 		return this._devices[id];
 	}
 
-	_getGeviceList() {
-		var self = this;
+	_getDeviceList() {
 		this._sendMessage({
 			"CommandType": "DeviceList"
-		}, function(err, data) {
-			var devices = data.Devices;
-			for (var deviceID in devices) {
-				if (!(devices[deviceID].ID in self._devices)) {
-					self._addDevice(devices[deviceID]);
+		}, (err, data) => {
+			let devices = data.Devices;
+			for (let deviceID in devices) {
+				if (!(devices[deviceID].ID in this._devices)) {
+					this._addDevice(devices[deviceID]);
 				}
 			}
-		self.emit("gotDeviceList")
+			this.emit("gotDeviceList");
 		});
 	}
 
@@ -149,12 +146,12 @@ module.exports = class AlmondClient extends EventEmitter {
 
 	_processDeviceUpdate(message) {
 		debug("Got device update msg", message)
-		var devices = message.Devices;
-		for (var deviceID in devices) {
-			var deviceValues = devices[deviceID].DeviceValues;
-			var device = this._devices[deviceID];
+		let devices = message.Devices;
+		for (let deviceID in devices) {
+			let deviceValues = devices[deviceID].DeviceValues;
+			let device = this._devices[deviceID];
 
-			for (var index in deviceValues) {
+			for (let index in deviceValues) {
 				device.updateProp(index, deviceValues[index].Value);
 			}
 		}
@@ -162,18 +159,18 @@ module.exports = class AlmondClient extends EventEmitter {
 
 	_addDevice(devData) {
 		debug("Adding device", devData);
-		var device = new AlmondDevice(this, devData);
+		let device = new AlmondDevice(this, devData);
 
 		this._devices[device.id] = device;
 		this.emit("deviceAdded", device);
 	}
 
 	_sendMessage(json, cb) {
-		var mii = randomstring.generate();
+		const mii = randomstring.generate();
 
 		json["MobileInternalIndex"] = mii;
 
-		var msg = JSON.stringify(json);
+		let msg = JSON.stringify(json);
 		this.ws.send(msg);
 		debug("Message Sent", msg);
 
@@ -183,8 +180,8 @@ module.exports = class AlmondClient extends EventEmitter {
 	_recvMessage(message) {
 		debug("Message Recved", message);
 
-		var json = JSON.parse(message);
-		var mii = json["MobileInternalIndex"];
+		const json = JSON.parse(message);
+		const mii = json["MobileInternalIndex"];
 
 		if (typeof mii === "undefined") {
 			debug("Got dynamic message");
@@ -201,10 +198,10 @@ class AlmondDevice extends EventEmitter {
 
 		this.client = client;
 
-		this.id = config.Data.ID;
+		this.id = Number(config.Data.ID);
 		this.name = config.Data.Name;
-		this.type = config.Data.Type;
-		this.location = config.Data.location;
+		this.type = Number(config.Data.Type);
+		this.location = config.Data.Location;
 		this.manufacturer = config.Data.Manufacturer || "Unknown Manufacturer";
 		this.model = config.Data.Model || "Unknown Model";
 
@@ -212,42 +209,50 @@ class AlmondDevice extends EventEmitter {
 
 		this._deviceValues = {};
 
-		for (var id in config.DeviceValues) {
+		for (let id in config.DeviceValues) {
 			this._deviceValues[id] = {
-				id: id,
+				id: Number(id),
 				name: config.DeviceValues[id].Name,
-				value: config.DeviceValues[id].Value
+				value: this.parseAlmondValue(config.DeviceValues[id].Value)
 			};
 		}
 	}
 
-	setProp(prop, value, cb) {
-		var self = this;
+	parseAlmondValue(value) { // Convert type, as Almond+ encodes every value as a string
+		if (typeof value === 'string') {
+			if (value === 'true' || value === 'false') {
+				value = value == 'true';
+			} else if (value !== '' && Number(value) == value) {
+				value = Number(value);
+			}
+		}
+		return value;
+	}
 
+	setProp(prop, value, cb) {
 		if (value == this._deviceValues[prop].value) {
-			cb(value);
+			if (cb) cb(value);
 			return;
 		}
-		//this._deviceValues[prop].value = value;
 
 		this.client._sendMessage({
-			"CommandType":"UpdateDeviceIndex",
-			"ID": this.id,
-			"Index": prop,
-			"Value": value
-		}, function(err, message) {
-			if (err) return cb(err);
+			"CommandType": "UpdateDeviceIndex",
+			"ID": String(this.id), // Almond+ encodes every value as a string
+			"Index": String(prop), // Almond+ encodes every value as a string
+			"Value": String(value) // Almond+ encodes every value as a string
+		}, (err, message) => {
+			if (err) {
+				if (cb) return cb(err);
+				return err;
+			}
 			if (message.Success) {
 				debug("Successfully sent property [%s] update [%s]", prop, value);
-				var waitForDevicePropUpdate = function(propUpdated, newValue) {
-					if (propUpdated == prop) {
-						self.removeListener('valueUpdated', waitForDevicePropUpdate);
-						cb(newValue);
+				if (cb) this.prependListener('valueUpdated', (propUpdated, newValue) => {
+					if (Number(propUpdated) == prop) {
+						this.removeListener('valueUpdated', waitForDevicePropUpdate);
+						if (cb) cb(this.parseAlmondValue(newValue));
 					}
-				}
-				if (cb) {
-					self.prependListener('valueUpdated', waitForDevicePropUpdate);
-				}
+				});
 			}
 		});
 	}
@@ -257,12 +262,8 @@ class AlmondDevice extends EventEmitter {
 	}
 
 	updateProp(prop, value) {
-		// Botch to hide the fact that the almond encodes true/false as strings rather than bools or ints.
-		if (typeof value === 'string') {
-			if (value === 'true' || value === 'false'){
-				value = value == 'true';
-			}
-		}
+		prop = Number(prop);
+		value = this.parseAlmondValue(value);
 
 		if (typeof this._deviceValues[prop] === "undefined") return;
 		if (this._deviceValues[prop].value === value) return;
