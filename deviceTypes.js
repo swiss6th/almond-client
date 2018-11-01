@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 // Maps between a device type id and a name
 module.exports = {

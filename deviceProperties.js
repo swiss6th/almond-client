@@ -1,13 +1,14 @@
-"use scrict";
-var deviceTypes = require('./deviceTypes.js');
+"use scrict"
 
-// Mapping device properties to their indexs.
-// Taken from =  https://wiki.securifi.com/index.php/Devicelist_Documentation
-// Note that the mapping names are not identical e.g. Thermostat
-// This is so that it's easier to determine device capabilities, thus you should
-// always check this file!
+const deviceTypes = require('./deviceTypes.js')
 
-var props = module.exports = {}
+// This file maps device properties to their indexes.
+// Source: https://wiki.securifi.com/index.php/Devicelist_Documentation
+// Note that the mapping names here are not identical to those in the Wiki.
+// Any differences are to make it easier to understand individual device capabilities.
+// Always check this file before assuming everything matches the Wiki!
+
+const props = module.exports = {}
 props[deviceTypes.BinarySwitch] = {
 	SwitchBinary: 1
 }
