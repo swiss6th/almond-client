@@ -1,4 +1,4 @@
-"use scrict"
+"use strict"
 
 const deviceTypes = require('./deviceTypes.js')
 
@@ -302,6 +302,11 @@ props[deviceTypes.NestSmokeDetector] = 58
 props[deviceTypes.GenericPSM] = {
 	State: 1,
 	SwitchMultilevel: 2
+}
+props[deviceTypes.AlmondClick] = {
+	Press: 1,
+	LowBattery: 2,
+	Tamper: 3
 }
 props[deviceTypes.AlmondBlink] = {
 	SwitchBinary: 1,

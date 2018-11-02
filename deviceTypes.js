@@ -58,6 +58,7 @@ module.exports = {
 	NestSmokeDetector: 58,
 	NaN: 59,
 	GenericPSM: 60,
+	AlmondClick: 61,
 	AlmondSiren: 63,
 	AlmondBlink: 64
 }
