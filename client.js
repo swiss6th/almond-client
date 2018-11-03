@@ -1,13 +1,13 @@
 "use strict"
 
-//process.env.DEBUG = '*'
+process.env.DEBUG = '*'
 //delete process.env.DEBUG
 
 const WebSocket = require('ws'),
 	EventEmitter = require('events').EventEmitter,
 	debug = require('debug')('almond-client'),
 	randomstring = require("randomstring"),
-	deviceProps = require("./deviceProperties.js")
+	devicePersonalities = require("./devicePersonalities")
 
 class AlmondWebSocket extends EventEmitter {
 	constructor(url) {
@@ -172,7 +172,8 @@ class AlmondDevice extends EventEmitter {
 		this.manufacturer = config.Data.Manufacturer || "Unknown Manufacturer"
 		this.model = config.Data.Model || "Unknown Model"
 
-		this.props = deviceProps[this.type]
+		const personality = devicePersonalities[this.type]
+		this.props = this._getProperties(personality)
 
 		this._deviceValues = {}
 
@@ -181,14 +182,25 @@ class AlmondDevice extends EventEmitter {
 			this._deviceValues[id] = {
 				id: Number(id),
 				name: values[id].Name,
-				value: values[id].Value
+				value: values[id].Value,
+				update: id in personality.DeviceProperties
+					? personality.DeviceProperties[id].ShouldAlwaysUpdate
+					: false
 			}
 		}
 	}
 
+	_getProperties(personality) {
+		const props = {}
+		for (let prop in personality.DeviceProperties) {
+			props[personality.DeviceProperties[prop].Name] = Number(prop)
+		}
+		return props
+	}
+
 	_updateProp(prop, value) {
 		if (typeof this._deviceValues[prop] === "undefined") return
-		if (this._deviceValues[prop].value === value) return
+		if (!this._deviceValues[prop].update && this._deviceValues[prop].value === value) return
 
 		debug(`updating property ${prop} from ${this._deviceValues[prop].value} to ${value}`)
 		this._deviceValues[prop].value = value

@@ -1,0 +1,1064 @@
+{
+	"1": {
+		"FriendlyDeviceType": "BinarySwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"2": {
+		"FriendlyDeviceType": "MultilevelSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"3": {
+		"FriendlyDeviceType": "BinarySensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorBinary",
+				"ShouldAlwaysUpdate": true
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"4": {
+		"FriendlyDeviceType": "MultilevelSwitchOnOff",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"5": {
+		"FriendlyDeviceType": "DoorLock",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Config",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "MaximumUsers",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"6": {
+		"FriendlyDeviceType": "Alarm",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"7": {
+		"FriendlyDeviceType": "Thermostat",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Mode",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "OperatingState",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "SetpointHeating",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "SetpointCooling",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "FanMode",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "FanState",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "Units",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "Humidity",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"8": {
+		"FriendlyDeviceType": "Controller",
+		"DeviceProperties": {}
+	},
+	"9": {
+		"FriendlyDeviceType": "SceneController",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Config",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"10": {
+		"FriendlyDeviceType": "StandardCIE",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"11": {
+		"FriendlyDeviceType": "MotionSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"12": {
+		"FriendlyDeviceType": "ContactSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"13": {
+		"FriendlyDeviceType": "FireSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"14": {
+		"FriendlyDeviceType": "WaterSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"15": {
+		"FriendlyDeviceType": "GasSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"16": {
+		"FriendlyDeviceType": "PersonalEmergencyDevice",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"17": {
+		"FriendlyDeviceType": "VibrationOrMovementSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"18": {
+		"FriendlyDeviceType": "RemoteControl",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"19": {
+		"FriendlyDeviceType": "KeyFob",
+		"DeviceProperties": {
+			"1": {
+				"Name": "ArmMode",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "PanicAlarm",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "EmergencyAlarm",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"20": {
+		"FriendlyDeviceType": "Keypad",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"21": {
+		"FriendlyDeviceType": "StandardWarningDevice",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"22": {
+		"FriendlyDeviceType": "SmartACSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "FrequencyMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "FrequencyDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "PowerMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "PowerDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "VoltageMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "VoltageDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "CurrentMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "CurrentDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "Frequency",
+				"ShouldAlwaysUpdate": false
+			},
+			"11": {
+				"Name": "ActivePower",
+				"ShouldAlwaysUpdate": false
+			},
+			"12": {
+				"Name": "RMSVoltage",
+				"ShouldAlwaysUpdate": false
+			},
+			"13": {
+				"Name": "RMSCurrent",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"23": {
+		"FriendlyDeviceType": "SmartDCSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "PowerMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "PowerDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "VoltageMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "VoltageDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "CurrentMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "CurrentDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "Power",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "Voltage",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "Current",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"24": {
+		"FriendlyDeviceType": "OccupancySensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Humidity",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"25": {
+		"FriendlyDeviceType": "LightSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Illuminance",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"26": {
+		"FriendlyDeviceType": "WindowCovering",
+		"DeviceProperties": {}
+	},
+	"27": {
+		"FriendlyDeviceType": "TemperatureSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Humidity",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"28": {
+		"FriendlyDeviceType": "ZigbeeDoorLock",
+		"DeviceProperties": {
+			"1": {
+				"Name": "LockState",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"29": {
+		"FriendlyDeviceType": "ZigbeeTempSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"30": {
+		"FriendlyDeviceType": "PressureSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Tolerance",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"31": {
+		"FriendlyDeviceType": "FlowSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Tolerance",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"32": {
+		"FriendlyDeviceType": "ColorDimmableLight",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Hue",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Saturation",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "ColorTemperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"33": {
+		"FriendlyDeviceType": "HAPump",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Capacity",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"34": {
+		"FriendlyDeviceType": "Shade",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"36": {
+		"FriendlyDeviceType": "SmokeDetector",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"37": {
+		"FriendlyDeviceType": "FloodSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"38": {
+		"FriendlyDeviceType": "ShockSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"39": {
+		"FriendlyDeviceType": "DoorSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"40": {
+		"FriendlyDeviceType": "MoistureSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SensorMultilevel",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"41": {
+		"FriendlyDeviceType": "MovementSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"43": {
+		"FriendlyDeviceType": "MultiSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary2",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"44": {
+		"FriendlyDeviceType": "UnknownOnOffModule",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"45": {
+		"FriendlyDeviceType": "BinaryPowerSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Power",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"46": {
+		"FriendlyDeviceType": "SetPointThermostat",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Setpoint",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Units",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"48": {
+		"FriendlyDeviceType": "HueLamp",
+		"DeviceProperties": {
+			"1": {
+				"Name": "HueBridgeId",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Hue",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Saturation",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "Effect",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "ColorMode",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "HueBulbId",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "UserName",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "Reachable",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"49": {
+		"FriendlyDeviceType": "MultiSensor",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Illuminance",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Temperature",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "Humidity",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"50": {
+		"FriendlyDeviceType": "SecurifiSmartSwitch",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "FrequencyMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "FrequencyDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "PowerMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "PowerDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "VoltageMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "VoltageDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "CurrentMultiplier",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "CurrentDivisor",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "Frequency",
+				"ShouldAlwaysUpdate": false
+			},
+			"11": {
+				"Name": "ActivePower",
+				"ShouldAlwaysUpdate": false
+			},
+			"12": {
+				"Name": "RMSVoltage",
+				"ShouldAlwaysUpdate": false
+			},
+			"13": {
+				"Name": "RMSCurrent",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"52": {
+		"FriendlyDeviceType": "RollerShutter",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Stop",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"53": {
+		"FriendlyDeviceType": "GarageDoorOpener",
+		"DeviceProperties": {
+			"1": {
+				"Name": "BarrierOperator",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"54": {
+		"FriendlyDeviceType": "ZWtoACIRExtender",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SensorMultilevel",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Mode",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "SetpointHeating",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "SetpointCooling",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "FanMode",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "Units",
+				"ShouldAlwaysUpdate": false
+			},
+			"8": {
+				"Name": "Swing",
+				"ShouldAlwaysUpdate": false
+			},
+			"9": {
+				"Name": "Status",
+				"ShouldAlwaysUpdate": false
+			},
+			"10": {
+				"Name": "IRCode",
+				"ShouldAlwaysUpdate": false
+			},
+			"11": {
+				"Name": "Config",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"55": {
+		"FriendlyDeviceType": "MultiSoundSiren",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"56": {
+		"FriendlyDeviceType": "EnergyReader",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Battery",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "Power",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Energy",
+				"ShouldAlwaysUpdate": false
+			},
+			"4": {
+				"Name": "Clamp1Power",
+				"ShouldAlwaysUpdate": false
+			},
+			"5": {
+				"Name": "Clamp1Energy",
+				"ShouldAlwaysUpdate": false
+			},
+			"6": {
+				"Name": "Clamp2Power",
+				"ShouldAlwaysUpdate": false
+			},
+			"7": {
+				"Name": "Clamp2Energy",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"57": {
+		"FriendlyDeviceType": "NestThermostat",
+		"DeviceProperties": {}
+	},
+	"58": {
+		"FriendlyDeviceType": "NestSmokeDetector",
+		"DeviceProperties": {}
+	},
+	"60": {
+		"FriendlyDeviceType": "GenericPSM",
+		"DeviceProperties": {
+			"1": {
+				"Name": "State",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchMultilevel",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"61": {
+		"FriendlyDeviceType": "AlmondClick",
+		"DeviceProperties": {
+			"1": {
+				"Name": "Press",
+				"ShouldAlwaysUpdate": true
+			},
+			"2": {
+				"Name": "LowBattery",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Tamper",
+				"ShouldAlwaysUpdate": true
+			}
+		}
+	},
+	"63": {
+		"FriendlyDeviceType": "AlmondSiren",
+		"DeviceProperties": {
+			"2": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	},
+	"64": {
+		"FriendlyDeviceType": "AlmondBlink",
+		"DeviceProperties": {
+			"1": {
+				"Name": "SwitchBinary",
+				"ShouldAlwaysUpdate": false
+			},
+			"2": {
+				"Name": "SwitchBinary2",
+				"ShouldAlwaysUpdate": false
+			},
+			"3": {
+				"Name": "Hue",
+				"ShouldAlwaysUpdate": false
+			}
+		}
+	}
+}
