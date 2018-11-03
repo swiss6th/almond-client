@@ -1,6 +1,6 @@
 "use strict"
 
-process.env.DEBUG = '*'
+//process.env.DEBUG = '*'
 //delete process.env.DEBUG
 
 const WebSocket = require('ws'),
@@ -14,8 +14,8 @@ class AlmondWebSocket extends EventEmitter {
 		super()
 
 		this.KEEPALIVE_INTERVAL_MS = 1000
-		this.RECONNECT_WAIT_MS = 1000
-		this.SEND_TIMEOUT_MS = 2000
+		this.RECONNECT_WAIT_MS = 977
+		this.SEND_TIMEOUT_MS = 1982
 		this.MAX_SEND_RETRIES = 10
 
 		this.ws = null
@@ -165,50 +165,61 @@ class AlmondDevice extends EventEmitter {
 
 		this.client = client
 
-		this.id = config.Data.ID
-		this.name = config.Data.Name
-		this.type = config.Data.Type
-		this.location = config.Data.Location
-		this.manufacturer = config.Data.Manufacturer || "Unknown Manufacturer"
-		this.model = config.Data.Model || "Unknown Model"
+		this._setDeviceInfo(config.Data)
 
-		const personality = devicePersonalities[this.type]
-		this.props = this._getProperties(personality)
+		this.personality = devicePersonalities[this.type]
+		this.props = this._getPropertyList(this.personality.DeviceProperties)
 
 		this._deviceValues = {}
+		this._setDeviceValues(config.DeviceValues)
+	}
 
-		const values = config.DeviceValues
-		for (let id in values) {
-			this._deviceValues[id] = {
-				id: Number(id),
-				name: values[id].Name,
-				value: values[id].Value,
-				update: id in personality.DeviceProperties
-					? personality.DeviceProperties[id].ShouldAlwaysUpdate
-					: false
+	_getPropertyList(properties) {
+		const list = {}
+		for (let prop in properties) {
+			list[properties[prop].Name] = Number(prop)
+		}
+		return list
+	}
+
+	_setDeviceInfo(data) {
+		this.id = data.ID
+		this.name = data.Name
+		this.type = data.Type
+		this.location = data.Location
+		this.manufacturer = data.Manufacturer || "Unknown Manufacturer"
+		this.model = data.Model || "Unknown Model"
+	}
+
+	_setDeviceValues(values) {
+		const deviceProperties = this.personality.DeviceProperties
+		for (let index in values) {
+			this._deviceValues[index] = {
+				index: Number(index),
+				name: values[index].Name,
+				value: values[index].Value,
+				update: index in deviceProperties && deviceProperties[index].ShouldAlwaysUpdate
 			}
 		}
 	}
 
-	_getProperties(personality) {
-		const props = {}
-		for (let prop in personality.DeviceProperties) {
-			props[personality.DeviceProperties[prop].Name] = Number(prop)
+	_updateDeviceValues(values) {
+		for (let index in values) {
+			this._updateDeviceValue(index, values[index].Value)
 		}
-		return props
 	}
 
-	_updateProp(prop, value) {
-		if (typeof this._deviceValues[prop] === "undefined") return
-		if (!this._deviceValues[prop].update && this._deviceValues[prop].value === value) return
+	_updateDeviceValue(index, value) {
+		if (typeof this._deviceValues[index] === "undefined") return
+		if (!this._deviceValues[index].update && this._deviceValues[index].value === value) return
 
-		debug(`updating property ${prop} from ${this._deviceValues[prop].value} to ${value}`)
-		this._deviceValues[prop].value = value
-		this.emit("valueUpdated", prop, value)
+		debug(`updating device value ${index} from ${this._deviceValues[index].value} to ${value}`)
+		this._deviceValues[index].value = value
+		this.emit("valueUpdated", Number(index), value)
 	}
 
-	setProp(prop, value, cb) {
-		if (value == this._deviceValues[prop].value) {
+	setProp(index, value, cb) {
+		if (value == this._deviceValues[index].value) {
 			if (cb) cb(value)
 			return
 		}
@@ -218,7 +229,7 @@ class AlmondDevice extends EventEmitter {
 		this.client.send({
 			"CommandType": "UpdateDeviceIndex",
 			"ID": this.id,
-			"Index": prop,
+			"Index": index,
 			"Value": value
 		}, (err, message) => {
 			if (err) {
@@ -226,24 +237,24 @@ class AlmondDevice extends EventEmitter {
 				return err
 			}
 			if (message && message.Success) {
-				debug(`successfully sent property [${prop}] update [${value}]`)
-				const waitForDevicePropUpdate = function(propUpdated, newValue) {
-					if (propUpdated == prop) {
-						self.removeListener('valueUpdated', waitForDevicePropUpdate)
+				debug(`successfully sent device value [${index}] update [${value}]`)
+				const waitForDeviceValueUpdate = function(indexUpdated, newValue) {
+					if (indexUpdated == index) {
+						self.removeListener('valueUpdated', waitForDeviceValueUpdate)
 						cb(newValue)
 					}
 				}
-				if (cb) self.prependListener('valueUpdated', waitForDevicePropUpdate)
+				if (cb) self.prependListener('valueUpdated', waitForDeviceValueUpdate)
 			}
 		})
 	}
 
-	getProp(prop) {
-		const deviceProp = this._deviceValues[prop]
-		return deviceProp !== undefined ? deviceProp.value : undefined
+	getProp(index) {
+		const deviceValue = this._deviceValues[index]
+		return deviceValue !== undefined && deviceValue.value !== undefined ? deviceValue.value : undefined
 	}
 
-	addUpdateListener(listener) {
+	addValueUpdatedListener(listener) {
 		this.on('valueUpdated', listener)
 	}
 }
@@ -270,17 +281,14 @@ module.exports = class AlmondClient extends EventEmitter {
 	}
 
 	_getDeviceList() {
-		this.almondWs.send({
+		this.send({
 			"CommandType": "DeviceList"
-		}, (err, data) => {
-			let devices = data.Devices
-			for (let deviceId in devices) {
-				if (!(deviceId in this._devices)) {
-					this._addDevice(devices[deviceId])
-				} else {
-					this._updateDevice(devices[deviceId])
-				}
+		}, (err, message) => {
+			if (err) {
+				debug("couldn't get device list")
+				return
 			}
+			this._processDeviceUpdate(message)
 			this.emit("gotDeviceList")
 		})
 	}
@@ -288,47 +296,86 @@ module.exports = class AlmondClient extends EventEmitter {
 	_processDynamicMessage(message) {
 		debug("got dynamicMessage", message)
 
-		switch(message.CommandType) {
+		switch (message.CommandType) {
 			case "DynamicIndexUpdated":
+				this._processIndexUpdate(message)
+				break
+			case "DynamicDeviceAdded":
+			case "DynamicDeviceUpdated":
 				this._processDeviceUpdate(message)
+				break
+			case "DynamicDeviceRemoved":
+				this._processDeviceRemoval(message)
 				break
 			default:
 				debug("didn't understand message")
 		}
 	}
 
-	_processDeviceUpdate(message) {
-		debug("got device update message", message)
+	_processIndexUpdate(message) {
+		debug("got index update message", message)
 		const devices = message.Devices
-		for (let deviceId in devices) {
-			this._processDeviceValues(deviceId, devices[deviceId])
+		for (let id in devices) {
+			if (id in this._devices) {
+				this._devices[id]._updateDeviceValues(devices[id].DeviceValues)
+			} else {
+				this._getDeviceList()
+			}
 		}
 	}
 
-	_processDeviceValues(deviceId, deviceData) {
-		const deviceValues = deviceData.DeviceValues
-		const device = this._devices[deviceId]
-
-		for (let prop in deviceValues) {
-			device._updateProp(Number(prop), deviceValues[prop].Value)
+	_processDeviceUpdate(message) {
+		const devices = message.Devices
+		for (let id in devices) {
+			if (id in this._devices) {
+				this._updateDevice(devices[id])
+			} else {
+				this._addDevice(devices[id])
+			}
 		}
 	}
 
-	_addDevice(deviceData) {
-		debug("adding device", deviceData)
-		const device = new AlmondDevice(this, deviceData)
+	_processDeviceRemoval(message) {
+		const devices = message.Devices
+		for (let id in devices) {
+			if (id in this._devices && this._devices[id].type == devices[id].Type) {
+				this._removeDevice(id)
+			}
+		}
+	}
+
+	_addDevice(message) {
+		debug("adding device", message)
+		const device = new AlmondDevice(this, message)
 
 		this._devices[device.id] = device
 		this.emit("deviceAdded", device)
 	}
 
-	_updateDevice(deviceData) {
-		debug("updating device", deviceData)
-		const deviceId = deviceData.Data.ID
-		const device = this._devices[deviceId]
+	_updateDevice(message) {
+		debug("updating device", message)
+		const device = this._devices[message.Data.ID]
 
-		this._processDeviceValues(deviceId, deviceData)
+		device._setDeviceInfo(message.Data)
+		device._updateDeviceValues(message.DeviceValues)
 		this.emit("deviceUpdated", device)
+	}
+
+	_removeDevice(id) {
+		debug("removing device", id)
+		const device = this._devices[id]
+		
+		delete this._devices[id]
+		this.emit("deviceRemoved", device)
+	}
+
+	_updateIndex(message) {
+		debug("updating device index", message)
+		const id = message.Data.ID
+		const device = this._devices[id]
+
+		device._updateDeviceValues(message.DeviceValues)
+		this.emit("indexUpdated", device)
 	}
 
 	getDevices() {
@@ -345,5 +392,17 @@ module.exports = class AlmondClient extends EventEmitter {
 
 	send(message, callback) {
 		this.almondWs.send(message, callback)
+	}
+
+	addDeviceAddedListener(listener) {
+		this.on("deviceAdded", listener)
+	}
+
+	addDeviceRemovedListener(listener) {
+		this.on("deviceRemoved", listener)
+	}
+
+	addDeviceUpdatedListener(listener) {
+		this.on("deviceUpdated", listener)
 	}
 }
