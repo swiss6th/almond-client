@@ -259,7 +259,7 @@ module.exports = class AlmondClient extends EventEmitter {
 
 		this._devices = {}
 
-		const {host, port, username, password} = config
+		const {host, port = 7681, username = "root", password} = config
 
 		const url = `ws://${host}:${port}/${username}/${password}`
 		this.almondWs = new AlmondWebSocket(url)
