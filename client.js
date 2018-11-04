@@ -182,39 +182,65 @@ class AlmondDevice extends EventEmitter {
 		return list
 	}
 
-	_setDeviceInfo(data) {
-		this.id = data.ID
-		this.name = data.Name
-		this.type = data.Type
-		this.location = data.Location
-		this.manufacturer = data.Manufacturer || "Unknown Manufacturer"
-		this.model = data.Model || "Unknown Model"
+	_setDeviceInfo(data, forceUpdate = false) {
+		if (
+			forceUpdate
+			|| this.id !== data.ID
+			|| this.name !== data.Name
+			|| this.type !== data.Type
+			|| this.location !== data.Location
+			|| this.manufacturer !== data.Manufacturer
+			|| this.model !== data.Model			
+		) {
+			this.id = data.ID
+			this.name = data.Name
+			this.type = data.Type
+			this.location = data.Location
+			this.manufacturer = data.Manufacturer || "Unknown Manufacturer"
+			this.model = data.Model || "Unknown Model"
+			return true
+		} else {
+			return false
+		}
 	}
 
 	_setDeviceValues(values) {
 		const deviceProperties = this.personality.DeviceProperties
 		for (let index in values) {
+			let updateFrequency = index in deviceProperties ? deviceProperties[index].UpdateFrequency : undefined
 			this._deviceValues[index] = {
 				index: Number(index),
 				name: values[index].Name,
 				value: values[index].Value,
-				update: index in deviceProperties && deviceProperties[index].ShouldAlwaysUpdate
+				update: updateFrequency || "onChange"
 			}
 		}
 	}
 
-	_updateDeviceValues(values) {
+	_updateDeviceValues(values, forceUpdate = false) {
 		for (let index in values) {
-			this._updateDeviceValue(index, values[index].Value)
+			if (index in this._deviceValues) {
+				this._updateDeviceValue(index, values[index].Value, forceUpdate)
+			}
 		}
 	}
 
-	_updateDeviceValue(index, value) {
-		if (typeof this._deviceValues[index] === "undefined") return
-		if (!this._deviceValues[index].update && this._deviceValues[index].value === value) return
+	_updateDeviceValue(index, value, forceUpdate = false) {
+		const property = this._deviceValues[index]
+		if (typeof property === "undefined") return
+		switch (property.update) {
+			case "always":
+				break
+			case "onTrigger":
+				if (!forceUpdate) return
+				break
+			case "onChange":
+			default:
+				if (property.value === value) return
+		}
 
-		debug(`updating device value ${index} from ${this._deviceValues[index].value} to ${value}`)
-		this._deviceValues[index].value = value
+		debug(`updating device value ${index} from ${property.value} to ${value}`)
+		property.value = value
 		this.emit("valueUpdated", Number(index), value)
 	}
 
@@ -298,7 +324,7 @@ module.exports = class AlmondClient extends EventEmitter {
 
 		switch (message.CommandType) {
 			case "DynamicIndexUpdated":
-				this._processIndexUpdate(message)
+				this._processIndexUpdate(message, true)
 				break
 			case "DynamicDeviceAdded":
 			case "DynamicDeviceUpdated":
@@ -312,25 +338,24 @@ module.exports = class AlmondClient extends EventEmitter {
 		}
 	}
 
-	_processIndexUpdate(message) {
-		debug("got index update message", message)
+	_processIndexUpdate(message, forceUpdate = false) {
 		const devices = message.Devices
 		for (let id in devices) {
 			if (id in this._devices) {
-				this._devices[id]._updateDeviceValues(devices[id].DeviceValues)
+				this._updateIndex(id, devices[id], forceUpdate)
 			} else {
 				this._getDeviceList()
 			}
 		}
 	}
 
-	_processDeviceUpdate(message) {
+	_processDeviceUpdate(message, forceUpdate = false) {
 		const devices = message.Devices
 		for (let id in devices) {
 			if (id in this._devices) {
-				this._updateDevice(devices[id])
+				this._updateDevice(id, devices[id], forceUpdate)
 			} else {
-				this._addDevice(devices[id])
+				this._addDevice(id, devices[id])
 			}
 		}
 	}
@@ -344,21 +369,22 @@ module.exports = class AlmondClient extends EventEmitter {
 		}
 	}
 
-	_addDevice(message) {
+	_addDevice(id, message) {
 		debug("adding device", message)
 		const device = new AlmondDevice(this, message)
 
-		this._devices[device.id] = device
+		this._devices[id] = device
 		this.emit("deviceAdded", device)
 	}
 
-	_updateDevice(message) {
+	_updateDevice(id, message, forceUpdate = false) {
 		debug("updating device", message)
-		const device = this._devices[message.Data.ID]
+		const device = this._devices[id]
 
-		device._setDeviceInfo(message.Data)
-		device._updateDeviceValues(message.DeviceValues)
-		this.emit("deviceUpdated", device)
+		device._updateDeviceValues(message.DeviceValues, forceUpdate)
+		if (device._setDeviceInfo(message.Data)) {
+			this.emit("deviceUpdated", device)
+		}
 	}
 
 	_removeDevice(id) {
@@ -369,12 +395,11 @@ module.exports = class AlmondClient extends EventEmitter {
 		this.emit("deviceRemoved", device)
 	}
 
-	_updateIndex(message) {
+	_updateIndex(id, message, forceUpdate = false) {
 		debug("updating device index", message)
-		const id = message.Data.ID
 		const device = this._devices[id]
 
-		device._updateDeviceValues(message.DeviceValues)
+		device._updateDeviceValues(message.DeviceValues, forceUpdate)
 		this.emit("indexUpdated", device)
 	}
 

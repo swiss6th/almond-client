@@ -4,7 +4,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -13,7 +13,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -22,15 +22,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorBinary",
-				"ShouldAlwaysUpdate": true
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -39,11 +39,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -52,19 +52,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Config",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "MaximumUsers",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -73,11 +73,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -86,43 +86,43 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Mode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "OperatingState",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "SetpointHeating",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "SetpointCooling",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "FanMode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "FanState",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "Units",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "Humidity",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -135,7 +135,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Config",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			}
 		}
 	},
@@ -144,15 +144,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -161,19 +161,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"4": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -182,19 +182,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"4": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -203,15 +203,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -220,19 +220,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"4": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -241,15 +241,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -258,15 +258,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -275,15 +275,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -292,15 +292,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -309,15 +309,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "ArmMode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "PanicAlarm",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"3": {
 				"Name": "EmergencyAlarm",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -326,15 +326,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -343,15 +343,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -360,55 +360,55 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "FrequencyMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "FrequencyDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "PowerMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "PowerDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "VoltageMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "VoltageDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "CurrentMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "CurrentDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "Frequency",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"11": {
 				"Name": "ActivePower",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"12": {
 				"Name": "RMSVoltage",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"13": {
 				"Name": "RMSCurrent",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -417,43 +417,43 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "PowerMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "PowerDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "VoltageMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "VoltageDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "CurrentMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "CurrentDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "Power",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "Voltage",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "Current",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -462,19 +462,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Humidity",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -483,11 +483,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Illuminance",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -500,15 +500,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Humidity",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -517,7 +517,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "LockState",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			}
 		}
 	},
@@ -526,7 +526,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -535,11 +535,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Tolerance",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -548,11 +548,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Tolerance",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -561,23 +561,23 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Hue",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "Saturation",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "ColorTemperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -586,15 +586,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Capacity",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -603,15 +603,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -620,11 +620,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -633,11 +633,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "always"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -646,11 +646,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -659,11 +659,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -672,11 +672,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SensorMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			}
 		}
 	},
@@ -685,11 +685,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -698,11 +698,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary2",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -711,11 +711,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -724,11 +724,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Power",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -737,19 +737,19 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Setpoint",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Units",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -758,43 +758,43 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "HueBridgeId",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Hue",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "Saturation",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "Effect",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "ColorMode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "HueBulbId",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "UserName",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "Reachable",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onTrigger"
 			}
 		}
 	},
@@ -803,23 +803,23 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Illuminance",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "Temperature",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "Humidity",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -828,55 +828,55 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "FrequencyMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "FrequencyDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "PowerMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "PowerDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "VoltageMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "VoltageDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "CurrentMultiplier",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "CurrentDivisor",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "Frequency",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"11": {
 				"Name": "ActivePower",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"12": {
 				"Name": "RMSVoltage",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"13": {
 				"Name": "RMSCurrent",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -885,15 +885,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Stop",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -902,7 +902,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "BarrierOperator",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -911,47 +911,47 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SensorMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Mode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "SetpointHeating",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "SetpointCooling",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "FanMode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "Units",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"8": {
 				"Name": "Swing",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"9": {
 				"Name": "Status",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"10": {
 				"Name": "IRCode",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"11": {
 				"Name": "Config",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -960,7 +960,7 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -969,31 +969,31 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Battery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "Power",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Energy",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"4": {
 				"Name": "Clamp1Power",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"5": {
 				"Name": "Clamp1Energy",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"6": {
 				"Name": "Clamp2Power",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"7": {
 				"Name": "Clamp2Energy",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -1010,11 +1010,11 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "State",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchMultilevel",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -1023,15 +1023,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "Press",
-				"ShouldAlwaysUpdate": true
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "LowBattery",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Tamper",
-				"ShouldAlwaysUpdate": true
+				"UpdateFrequency": "always"
 			}
 		}
 	},
@@ -1040,7 +1040,7 @@
 		"DeviceProperties": {
 			"2": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
@@ -1049,15 +1049,15 @@
 		"DeviceProperties": {
 			"1": {
 				"Name": "SwitchBinary",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"2": {
 				"Name": "SwitchBinary2",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			},
 			"3": {
 				"Name": "Hue",
-				"ShouldAlwaysUpdate": false
+				"UpdateFrequency": "onChange"
 			}
 		}
 	}
