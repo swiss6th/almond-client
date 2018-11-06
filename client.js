@@ -15,11 +15,15 @@ class AlmondWebSocket extends EventEmitter {
 
 		this.KEEPALIVE_INTERVAL_MS = 1000
 		this.RECONNECT_WAIT_MS = 977
+
+		this.PULSE_TIMEOUT_MS = 1100
+
 		this.SEND_TIMEOUT_MS = 1982
 		this.MAX_SEND_RETRIES = 10
 
 		this.ws = null
 		this.heartbeat = null
+		this.isConnected = false
 
 		this.url = url
 		this._open(this.url)
@@ -61,22 +65,40 @@ class AlmondWebSocket extends EventEmitter {
 	_open(url) {
 		debug("opening WebSocket")
 		this.ws = new WebSocket(url)
-		this.ws.on('error', e => debug("encountered WebSocket error", e))
+		this.ws.on('error', this._onError.bind(this))
 		this.ws.on('close', this._onClose.bind(this))
 		this.ws.on('open', this._onOpen.bind(this))
 		this.ws.on('message', this._receive.bind(this))
 	}
 
+	_onError(error) {
+		debug("encountered WebSocket error", error)
+	}
+
 	_onOpen() {
+		clearTimeout(this.pulse)
+
 		debug("WebSocket opened")
 		this._startKeepAlive()
 		this.emit("open")
+
+		if (!this.isConnected) {
+			this.isConnected = true
+			this.emit("up")
+		}
 	}
 
 	_onClose() {
 		debug("WebSocket closed")
 		setTimeout(this._reconnect.bind(this), this.RECONNECT_WAIT_MS)
 		this.emit("close")
+
+		this.pulse = setTimeout( () => {
+			if (this.isConnected) {
+				this.isConnected = false
+				this.emit("down")
+			}
+		}, this.PULSE_TIMEOUT_MS)
 	}
 
 	_startKeepAlive() {
@@ -199,9 +221,8 @@ class AlmondDevice extends EventEmitter {
 			this.manufacturer = data.Manufacturer || "Unknown Manufacturer"
 			this.model = data.Model || "Unknown Model"
 			return true
-		} else {
-			return false
 		}
+		return false
 	}
 
 	_setDeviceValues(values) {
@@ -301,6 +322,8 @@ module.exports = class AlmondClient extends EventEmitter {
 		const url = `ws://${host}:${port}/${username}/${password}`
 		this.almondWs = new AlmondWebSocket(url)
 		this.almondWs.on("open", this._getDeviceList.bind(this))
+		this.almondWs.on("up", () => this.emit("connected"))
+		this.almondWs.on("down", () => this.emit("disconnected"))
 		this.almondWs.on("dynamicMessage", this._processDynamicMessage.bind(this))
 
 		this.once("gotDeviceList", () => this.emit("ready"))
@@ -417,17 +440,5 @@ module.exports = class AlmondClient extends EventEmitter {
 
 	send(message, callback) {
 		this.almondWs.send(message, callback)
-	}
-
-	addDeviceAddedListener(listener) {
-		this.on("deviceAdded", listener)
-	}
-
-	addDeviceRemovedListener(listener) {
-		this.on("deviceRemoved", listener)
-	}
-
-	addDeviceUpdatedListener(listener) {
-		this.on("deviceUpdated", listener)
 	}
 }

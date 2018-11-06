@@ -1,9 +1,10 @@
 Almond+ WebSocket client for [swiss6th/homebridge-almond](https://github.com/swiss6th/homebridge-almond).
 
 # Features
+- Type conversion of JSON to and from Almond+ (Almond+ uses only strings)
 - Keepalive in case connection to Almond+ is lost
 - Resending of messages after timeout
-- Type conversion of JSON to and from Almond+ (Almond+ uses only strings)
+- Connection status events for host plugin
 - Customizable update frequency for each device property
 
 # Device Personalities
@@ -16,4 +17,4 @@ In [devicePersonalities.json](devicePersonalities.json), you can specify one of 
 - `"onTrigger"`: An update to the property will be emitted whenever the device sends a value, even if the value is the same as the cached value. This option is useful for devices like programmable buttons, where values are used as triggers for other actions.
 - `"always"`: An update to the property will be emitted whenever the device sends a value, as well as anytime the cached values are updated by the client (e.g., after recovering from a connection loss). This option is useful for devices like smoke detectors, where repeated values indicate the continued presence of a condition.
 
-**Warning**: The choices of update frequencies listed in [devicePersonalities.json](devicePersonalities.json) are my own and may not suit your needs. Change them as you see fit. Under no circumstances will I be held liable if you missed a crucial value update!
+**Warning**: The choices of update frequencies listed in [devicePersonalities.json](devicePersonalities.json) are my own and may not suit your needs. Change them as you see fit. Under no circumstances will I be held liable if you miss a crucial value update!
