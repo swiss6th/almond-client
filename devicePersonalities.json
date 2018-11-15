@@ -710,11 +710,11 @@
 		"FriendlyDeviceType": "UnknownOnOffModule",
 		"DeviceProperties": {
 			"1": {
-				"Name": "SwitchBinary",
+				"Name": "SwitchBinary1",
 				"UpdateFrequency": "onChange"
 			},
 			"2": {
-				"Name": "SwitchBinary",
+				"Name": "SwitchBinary2",
 				"UpdateFrequency": "onChange"
 			}
 		}

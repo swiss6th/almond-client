@@ -3,10 +3,11 @@
 //process.env.DEBUG = '*'
 //delete process.env.DEBUG
 
-const WebSocket = require('ws'),
-	EventEmitter = require('events').EventEmitter,
+const
 	debug = require('debug')('almond-client'),
 	randomstring = require("randomstring"),
+	EventEmitter = require('events').EventEmitter,
+	WebSocket = require('ws'),
 	devicePersonalities = require("./devicePersonalities")
 
 class AlmondWebSocket extends EventEmitter {
