@@ -697,7 +697,7 @@
 		"FriendlyDeviceType": "MultiSwitch",
 		"DeviceProperties": {
 			"1": {
-				"Name": "SwitchBinary",
+				"Name": "SwitchBinary1",
 				"UpdateFrequency": "onChange"
 			},
 			"2": {
