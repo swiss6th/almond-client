@@ -1009,7 +1009,7 @@
 		"FriendlyDeviceType": "GenericPSM",
 		"DeviceProperties": {
 			"1": {
-				"Name": "State",
+				"Name": "SwitchBinary",
 				"UpdateFrequency": "onChange"
 			},
 			"2": {

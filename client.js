@@ -221,6 +221,7 @@ class AlmondDevice extends EventEmitter {
 			this.location = data.Location
 			this.manufacturer = data.Manufacturer || "Unknown Manufacturer"
 			this.model = data.Model || "Unknown Model"
+			this.version = data.Version
 			return true
 		}
 		return false
