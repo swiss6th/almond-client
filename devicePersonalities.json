@@ -51,8 +51,8 @@
 		"FriendlyDeviceType": "DoorLock",
 		"DeviceProperties": {
 			"1": {
-				"Name": "State",
-				"UpdateFrequency": "onChange"
+				"Name": "LockState",
+				"UpdateFrequency": "onTrigger"
 			},
 			"2": {
 				"Name": "Config",
