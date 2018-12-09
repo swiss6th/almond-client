@@ -41,7 +41,7 @@ class AlmondWebSocket extends EventEmitter {
 		return value
 	}
 
-	_parseAlmondObject(object) { // Convert type of object received from Almond+
+	_parseAlmondObject(object) { // Convert type of object received from Almond
 		for (const key in object) {
 			const value = object[key]
 			if (typeof value === "object" && value !== null) {
@@ -52,7 +52,7 @@ class AlmondWebSocket extends EventEmitter {
 		}
 	}
 
-	_formatObject(object) { // Convert type of object to be sent to Almond+
+	_formatObject(object) { // Convert type of object to be sent to Almond
 		for (const key in object) {
 			const value = object[key]
 			if (typeof value === "object" && value !== null) {

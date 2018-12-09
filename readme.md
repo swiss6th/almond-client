@@ -1,8 +1,8 @@
-Almond+ WebSocket client for [swiss6th/homebridge-almond](https://github.com/swiss6th/homebridge-almond).
+Almond WebSocket client for [swiss6th/homebridge-almond](https://github.com/swiss6th/homebridge-almond).
 
 # Features
-- Type conversion of JSON to and from Almond+ (Almond+ uses only strings)
-- Keepalive in case connection to Almond+ is lost
+- Type conversion of JSON to and from the Almond (Almond routers use only strings)
+- Keepalive in case connection to the Almond is lost
 - Resending of messages after timeout
 - Connection status events for host plugin
 - Customizable update frequency for each device property
