@@ -1,4 +1,4 @@
-Almond WebSocket client for [swiss6th/homebridge-almond](https://github.com/swiss6th/homebridge-almond).
+Almond WebSocket client for [swiss6th/homebridge-almond](https://github.com/swiss6th/homebridge-almond). Note that this is not maintained or endorsed by Securifi.
 
 # Features
 - Type conversion of JSON to and from the Almond (Almond routers use only strings)
