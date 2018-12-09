@@ -518,6 +518,10 @@
 			"1": {
 				"Name": "LockState",
 				"UpdateFrequency": "onTrigger"
+			},
+			"2": {
+				"Name": "Battery",
+				"UpdateFrequency": "onChange"
 			}
 		}
 	},
