@@ -310,7 +310,7 @@ module.exports = class AlmondClient extends EventEmitter {
 	constructor(config) {
 		super()
 
-		if (config === undefined) {
+		if (config === undefined || config === null || config === {} || config === "") {
 			debug("didn't receive config from caller")
 			return
 		}
